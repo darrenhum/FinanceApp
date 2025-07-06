@@ -10,5 +10,20 @@ build/
 coverage/
 .nyc_output/
 
-# Local setup documentation
+# Temporary files and test data
+*.tmp
+*.temp
+response.json
+test-payload.json
 SETUP_SUMMARY.md
+
+# IDE and OS files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Runtime and cache
+.cache/
+.parcel-cache/

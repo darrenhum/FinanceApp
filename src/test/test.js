@@ -67,8 +67,8 @@ test('Required config files exist', () => {
     'eslint.config.js',
     '.prettierrc',
     '.gitignore',
-    'DESIGN.md',
-    'README.md',
+    'docs/DESIGN.md',
+    'docs/README.md',
   ];
 
   requiredFiles.forEach((file) => {
@@ -99,7 +99,13 @@ test('GitHub Actions workflow exists', () => {
 
 // Test 6: Check project folder structure
 test('Project folder structure is correct', () => {
-  const expectedFolders = ['src', 'src/test', 'pulumi', '.github/workflows'];
+  const expectedFolders = [
+    'src',
+    'src/test',
+    'pulumi',
+    '.github/workflows',
+    'docs',
+  ];
 
   expectedFolders.forEach((folder) => {
     assert(
@@ -112,6 +118,17 @@ test('Project folder structure is correct', () => {
   assert(
     fs.existsSync(path.join(projectRoot, 'src/test/test.js')),
     'Test file should be in src/test directory'
+  );
+
+  // Verify documentation is in docs folder
+  assert(
+    fs.existsSync(path.join(projectRoot, 'docs/DESIGN.md')),
+    'DESIGN.md should be in docs directory'
+  );
+
+  assert(
+    fs.existsSync(path.join(projectRoot, 'docs/README.md')),
+    'Detailed README.md should be in docs directory'
   );
 });
 
