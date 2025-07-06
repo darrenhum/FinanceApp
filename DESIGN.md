@@ -6,9 +6,12 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 
 ## 0. Roadmap at a Glance
 
-| Phase                               | Intended Users    | Primary Goal                                                               | Core Architecture                           |
-| ----------------------------------- | ----------------- | -------------------------------------------------------------------------- | ------------------------------------------- |
+| Phase | Intended Users | Primary Goal | Core Architecture |
+| ----- | -------------- | ------------ | ----------------- |
+|       |                |              |                   |
+
 | **Phase I — Personal Edition**      | You and your wife | Ship a self‑hosted MVP with zero running cost and minimal DevOps overhead. | **Simplified Serverless Stack** (see § 1.3) |
+| ----------------------------------- | ----------------- | -------------------------------------------------------------------------- | ------------------------------------------- |
 | **Phase II — Multi‑Tenant Edition** | Public users      | Add tenant isolation, scalability, and compliance for a paid SaaS launch.  | **Full Cloud‑Native Stack** (see § 2.3)     |
 
 ---
