@@ -31,6 +31,7 @@ npm run format
 ### Current Status
 
 **Sprint 0 Complete** ✅ - Development environment, infrastructure, and CI/CD pipeline ready
+**Sprint 1 Complete** ✅ - NestJS backend, authentication, database entities, and seed data
 
 ### Tech Stack
 
@@ -69,4 +70,4 @@ npm test          # Run test suite
 
 ---
 
-**Target Cost**: $0 (AWS Free Tier) | **Next**: Sprint 1 (Core Backend)
+**Target Cost**: $0 (AWS Free Tier) | **Next**: Sprint 2 (Transaction Flow)
