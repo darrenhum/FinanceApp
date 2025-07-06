@@ -185,6 +185,7 @@ const dbInstance = new aws.rds.Instance('finance-db', {
 
   vpcSecurityGroupIds: [dbSecurityGroup.id],
   dbSubnetGroupName: subnetGroup.name,
+  publiclyAccessible: true, // For dev environment - allows external connections
 
   backupRetentionPeriod: 7,
   backupWindow: '03:00-04:00',

@@ -2,15 +2,21 @@
   "name": "financeapp",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
-  "main": "index.js",
+  "description": "Privacy-first finance tracker - Phase I Personal Edition",
   "scripts": {
-    "test": "node src/test/test.js",
+    "test": "node test/integration.js",
+    "test:backend": "cd backend && npm test",
+    "dev:backend": "cd backend && npm run start:dev",
+    "build:backend": "cd backend && npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:backend": "cd backend && npm run lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "format:backend": "cd backend && npm run format",
+    "prepare": "husky",
+    "install:backend": "cd backend && npm install",
+    "setup": "npm install && npm run install:backend"
   },
   "repository": {
     "type": "git",

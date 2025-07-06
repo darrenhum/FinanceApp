@@ -146,20 +146,65 @@ FinanceApp/
 │   ├── workflows/             # CI/CD pipelines
 │   └── instructions/          # AI development guidelines
 ├── .husky/                    # Git hooks (pre-commit automation)
+├── backend/                   # NestJS API Application
+│   ├── src/                   # Source code
+│   │   ├── auth/              # Authentication module
+│   │   ├── entities/          # TypeORM entities
+│   │   ├── app.module.ts      # Main application module
+│   │   └── main.ts            # Application entry point
+│   ├── test/                  # Backend-specific tests
+│   ├── .env                   # Backend environment variables
+│   ├── package.json           # Backend dependencies
+│   └── tsconfig.json          # TypeScript configuration
 ├── docs/                      # Project documentation
+│   ├── DESIGN.md              # Architecture and roadmap
+│   └── README.md              # Detailed documentation
 ├── pulumi/                    # Infrastructure as Code
-├── src/                       # Application source code
-│   ├── index.js              # Main application entry point
-│   └── test/                 # Test files
-│       └── test.js           # Custom test runner
-├── .gitignore                # Git ignore patterns
-├── .lintstagedrc.js          # Lint-staged configuration
-├── .prettierrc               # Prettier formatting rules
-├── .prettierignore           # Files to exclude from formatting
-├── eslint.config.js          # ESLint configuration (flat config)
-├── package.json              # Project dependencies and scripts
-├── DESIGN.md                 # Project roadmap and planning (manual updates only)
-└── README.md                 # Project documentation (this file)
+│   ├── index.ts               # AWS infrastructure definition
+│   └── package.json           # Pulumi dependencies
+├── test/                      # Integration tests
+│   └── integration.js         # Project-wide integration tests
+├── .gitignore                 # Git ignore patterns
+├── .lintstagedrc.js           # Lint-staged configuration
+├── .prettierrc                # Prettier formatting rules
+├── eslint.config.js           # ESLint configuration
+├── package.json               # Root project configuration
+└── README.md                  # Project overview and quick start
+```
+
+### Backend Architecture (Sprint 1 Complete) ✅
+
+**NestJS API with TypeORM:**
+
+- **Authentication**: JWT-based auth with bcrypt password hashing (12 salt rounds)
+- **Database Entities**: Household, User, Category, Account entities with proper relationships
+- **Environment Configuration**: Centralized config with validation
+- **TypeScript**: Fully typed with strict TypeScript configuration
+- **Testing**: Jest integration tests and E2E testing setup
+
+### Database Schema
+
+**Core Entities:**
+
+- `households`: Single household for Phase I (supports multi-tenant expansion)
+- `users`: Exactly 2 users per household with secure password storage
+- `categories`: Hierarchical budget categories with parent-child relationships
+- `accounts`: Bank accounts and credit cards with balance tracking
+- `transactions`: (Coming in Sprint 2) Transaction records with category assignment
+- `budgets`: (Coming in Sprint 3) Monthly budget limits with rollover capabilities
+  ├── src/ # Application source code
+  │ ├── index.js # Main application entry point
+  │ └── test/ # Test files
+  │ └── test.js # Custom test runner
+  ├── .gitignore # Git ignore patterns
+  ├── .lintstagedrc.js # Lint-staged configuration
+  ├── .prettierrc # Prettier formatting rules
+  ├── .prettierignore # Files to exclude from formatting
+  ├── eslint.config.js # ESLint configuration (flat config)
+  ├── package.json # Project dependencies and scripts
+  ├── DESIGN.md # Project roadmap and planning (manual updates only)
+  └── README.md # Project documentation (this file)
+
 ```
 
 ### Design Principles
@@ -169,3 +214,4 @@ FinanceApp/
 - **Industry Standards**: Follows Node.js and modern JavaScript project conventions
 - **Scalability**: Structure supports future growth and additional features
 - **Developer Experience**: Clear organization for easy navigation and onboarding
+```

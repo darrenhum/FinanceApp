@@ -17,13 +17,16 @@ applyTo: '**'
 
 - **docs/README.md** is the primary documentation target for AI updates
 - **README.md** (root) should contain project overview and quick start only
-- Update docs/README.md to reflect current state of:
+- Update docs/README.md as commands are executed to reflect current state of:
   - Tech stack and architecture
   - Application flow and features
   - Test setup and coverage
   - Infrastructure and deployment
   - Development workflow
   - Getting started guides
+- **.github/instructions/copilot-instructions.instructions.md** is the source of truth for AI development guidelines
+  - Use this file to understand how to assist with development tasks, code quality, and project standards
+  - Keep it updated as the user evolves the ai process
 
 ## 🏗️ Project Architecture
 
@@ -63,25 +66,29 @@ FinanceApp/
 │   ├── workflows/             # CI/CD pipelines
 │   └── instructions/          # AI development guidelines
 ├── .husky/                    # Git hooks (pre-commit automation)
+├── backend/                   # NestJS API Application
+│   ├── src/                   # Backend source code
+│   │   ├── auth/              # Authentication module
+│   │   ├── entities/          # TypeORM entities (Household, User, etc.)
+│   │   ├── app.module.ts      # Main application module
+│   │   └── main.ts            # Application entry point
+│   ├── test/                  # Backend-specific tests
+│   ├── .env                   # Backend environment variables
+│   ├── package.json           # Backend dependencies
+│   └── tsconfig.json          # TypeScript configuration
 ├── docs/                      # Project documentation
+│   ├── DESIGN.md              # Project roadmap (NEVER EDIT)
+│   └── README.md              # Detailed documentation (AI updates here)
 ├── pulumi/                    # Infrastructure as Code
-├── src/                       # Application source code
-│   ├── index.js              # Main application entry point
-│   ├── test/                 # Test files
-│   │   └── test.js           # Custom test runner
-│   ├── components/           # React components (future)
-│   ├── api/                  # API routes/controllers (future)
-│   └── utils/                # Shared utilities (future)
-├── .gitignore                # Git ignore patterns
-├── .lintstagedrc.js          # Lint-staged configuration
-├── .prettierrc               # Prettier formatting rules
-├── .prettierignore           # Files to exclude from formatting
-├── eslint.config.js          # ESLint configuration (flat config)
-├── package.json              # Project dependencies and scripts
-├── docs/                     # Project documentation
-│   ├── DESIGN.md            # Project roadmap (NEVER EDIT)
-│   └── README.md            # Detailed documentation (AI updates here)
-└── README.md                 # Project overview and quick start
+├── test/                      # Integration tests
+│   └── integration.js         # Project-wide tests
+├── .gitignore                 # Git ignore patterns
+├── .lintstagedrc.js           # Lint-staged configuration
+├── .prettierrc                # Prettier formatting rules
+├── .prettierignore            # Files to exclude from formatting
+├── eslint.config.js           # ESLint configuration (flat config)
+├── package.json               # Root project configuration
+└── README.md                  # Project overview and quick start
 ```
 
 ### Naming Conventions
@@ -96,9 +103,10 @@ FinanceApp/
 
 ### Current Test Setup
 
-- Custom test runner at `src/test/test.js`
+- Custom integration test runner at `test/integration.js`
+- Backend-specific tests in `backend/test/` using Jest
 - Tests validate project structure, configs, and basic functionality
-- Run with `npm test`
+- Run with `npm test` (integration) or `npm run test:backend` (backend-specific)
 - All tests must pass before commits (enforced by pre-commit hooks)
 
 ### Future Testing (Sprint 2+)
@@ -110,11 +118,12 @@ FinanceApp/
 
 ## 🚀 Infrastructure & Deployment
 
-### Current Infrastructure (Sprint 0 Complete)
+### Current Infrastructure (Sprint 0 + Sprint 1 Complete)
 
 - **API Gateway**: RESTful endpoints
 - **Lambda**: Serverless compute (hello-world deployed)
 - **RDS PostgreSQL**: Free tier database
+- **NestJS Backend**: TypeScript API with authentication, entities, and database connection
 - **Region**: us-east-1
 - **Environment**: dev stack
 

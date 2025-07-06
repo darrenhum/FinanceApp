@@ -10,8 +10,8 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 | ----- | -------------- | ------------ | ----------------- |
 |       |                |              |                   |
 
-|     |
-| --- |
+|   |
+| - |
 
 | **Phase I — Personal Edition**      | You and your wife | Ship a self‑hosted MVP with zero running cost and minimal DevOps overhead. | **Simplified Serverless Stack** (see § 1.3) |
 | ----------------------------------- | ----------------- | -------------------------------------------------------------------------- | ------------------------------------------- |
@@ -23,13 +23,13 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 
 ## 1. Key Scope Decisions
 
-- **Single household:** exactly two user accounts.
-- **Authentication:** basic email + password, no social logins.
-- **Feature set:** manual transaction entry, CSV import, dashboards, per‑category budgets.
-- **Hosting:** AWS Free Tier (or a single VPS).
-- **Security:** HTTPS and hashed passwords, but no enterprise controls.
-- **Cost target:** **Free** (stay within free tiers or self‑hosting).
-- **Development environment:** Windows 11 + Visual Studio Code (WSL 2 optional). All shell commands reference **PowerShell** or **Git Bash** equivalents, and Docker Desktop (WSL 2 backend) is assumed for container tasks.
+* **Single household:** exactly two user accounts.
+* **Authentication:** basic email + password, no social logins.
+* **Feature set:** manual transaction entry, CSV import, dashboards, per‑category budgets.
+* **Hosting:** AWS Free Tier (or a single VPS).
+* **Security:** HTTPS and hashed passwords, but no enterprise controls.
+* **Cost target:** **Free** (stay within free tiers or self‑hosting).
+* **Development environment:** Windows 11 + Visual Studio Code (WSL 2 optional). All shell commands reference **PowerShell** or **Git Bash** equivalents, and Docker Desktop (WSL 2 backend) is assumed for container tasks.
 
 ### 1.1 Core Features
 
@@ -62,8 +62,8 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
                                   └──────────────┘
 ```
 
-- **Deployment:** Pulumi or Serverless Framework provisions API Gateway, Lambda, and an RDS Free‑Tier PostgreSQL (or SQLite if using a VPS).
-- **Bulk import:** Parse CSV in the browser and send JSON to the API, avoiding an S3/Lambda ETL pipeline for the MVP.
+* **Deployment:** Pulumi or Serverless Framework provisions API Gateway, Lambda, and an RDS Free‑Tier PostgreSQL (or SQLite if using a VPS).
+* **Bulk import:** Parse CSV in the browser and send JSON to the API, avoiding an S3/Lambda ETL pipeline for the MVP.
 
 ### 1.4 Sprint Plan and Task Breakdown
 
@@ -71,13 +71,13 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 
 #### Sprint 0 — Environment Setup (1 day)
 
-| Step | Task                                                                                                                                           | Status       |
-| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Step | Task                                                                                                                                           | Status      |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | 0.0  | Create a private GitHub repo; add `README.md` and `.gitignore`.                                                                                | ✅ Completed |
 | 0.1  | Install Node 20 via **nvm‑windows** (or Volta); run `npm init -y`. Install recommended VS Code extensions (ESLint, Prettier, Docker, GitLens). | ✅ Completed |
 | 0.2  | Configure ESLint, Prettier, and Husky pre‑commit hooks.                                                                                        | ✅ Completed |
 | 0.3  | Install Pulumi; create a **dev** stack with a placeholder API Gateway, a hello‑world Lambda, and RDS Free‑Tier Postgres (or local SQLite).     | ✅ Completed |
-| 0.4  | Add a GitHub Actions workflow: checkout → setup‑node → `npm ci` → lint + unit tests.                                                           | ⬜ Pending   |
+| 0.4  | Add a GitHub Actions workflow: checkout → setup‑node → `npm ci` → lint + unit tests.                                                           | ✅ Completed |
 
 #### Sprint 1 — Core Backend (3 days)
 
@@ -148,11 +148,11 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 
 ## 2. Expanded Objectives
 
-- **Unlimited households** with member invitations.
-- **Native mobile app** (React Native + push notifications).
-- **Custom dashboards** with a widget builder.
-- **Institution sync** via Plaid/Flinks.
-- **Compliance:** SOC 2 roadmap, GDPR, PIPEDA, OWASP Top‑10.
+* **Unlimited households** with member invitations.
+* **Native mobile app** (React Native + push notifications).
+* **Custom dashboards** with a widget builder.
+* **Institution sync** via Plaid/Flinks.
+* **Compliance:** SOC 2 roadmap, GDPR, PIPEDA, OWASP Top‑10.
 
 ### 2.1 Non‑Functional Targets
 
@@ -220,7 +220,7 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 
 # 3. Unified Domain Model
 
-_(Phase I uses a single pre‑seeded household; Phase II enables multi‑tenant isolation.)_
+*(Phase I uses a single pre‑seeded household; Phase II enables multi‑tenant isolation.)*
 
 | Entity              | Key Fields (excerpt)                                                                                            |
 | ------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -241,4 +241,4 @@ Detailed planning will begin once the Personal Edition reaches feature‑complet
 
 ---
 
-_Document proof‑read, grammar‑checked, and headings unified for clarity._
+*Document proof‑read, grammar‑checked, and headings unified for clarity.*

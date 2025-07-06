@@ -10,6 +10,12 @@ build/
 coverage/
 .nyc_output/
 
+# Backend specific
+backend/dist/
+backend/node_modules/
+backend/.env
+backend/.env.*
+
 # Temporary files and test data
 *.tmp
 *.temp
