@@ -2,9 +2,6 @@
 
 [![CI/CD Pipeline](https://github.com/darrenhum/FinanceApp/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/darrenhum/FinanceApp/actions/workflows/ci-cd.yml)
 
-> **🤖 AI-Powered Development**  
-> This project is created entirely by VS Code AI Agent (GitHub Copilot), with architecture and design by ChatGPT o3. No human code was written - only AI collaboration and guidance.
-
 A privacy-first finance tracker built in two phases: **Personal Edition** (MVP for personal use) and **Multi-Tenant Edition** (public SaaS).
 
 ## Project Overview
