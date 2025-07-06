@@ -1,6 +1,6 @@
 # Finance Tracker Application – Dual‑Phase Design Roadmap
 
-A staged plan | 0.3 | Install Pulumi; create a **dev** stack with a placeholder API Gateway, a hello‑world Lambda, and RDS Free‑Tier Postgres (or local SQLite). | ✅ Completed |or building a privacy‑first finance tracker for personal use (Phase I) and then evolving it into a secure, multi‑tenant product (Phase II).
+A staged plan for building a privacy‑first finance tracker for personal use (Phase I) and then evolving it into a secure, multi‑tenant product (Phase II).
 
 ---
 
