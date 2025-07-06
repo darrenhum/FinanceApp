@@ -10,6 +10,9 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 | ----- | -------------- | ------------ | ----------------- |
 |       |                |              |                   |
 
+|     |
+| --- |
+
 | **Phase I — Personal Edition**      | You and your wife | Ship a self‑hosted MVP with zero running cost and minimal DevOps overhead. | **Simplified Serverless Stack** (see § 1.3) |
 | ----------------------------------- | ----------------- | -------------------------------------------------------------------------- | ------------------------------------------- |
 | **Phase II — Multi‑Tenant Edition** | Public users      | Add tenant isolation, scalability, and compliance for a paid SaaS launch.  | **Full Cloud‑Native Stack** (see § 2.3)     |
@@ -73,7 +76,7 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 | 0.0  | Create a private GitHub repo; add `README.md` and `.gitignore`.                                                                                | ✅ Completed |
 | 0.1  | Install Node 20 via **nvm‑windows** (or Volta); run `npm init -y`. Install recommended VS Code extensions (ESLint, Prettier, Docker, GitLens). | ✅ Completed |
 | 0.2  | Configure ESLint, Prettier, and Husky pre‑commit hooks.                                                                                        | ✅ Completed |
-| 0.3  | Install Pulumi; create a **dev** stack with a placeholder API Gateway, a hello‑world Lambda, and RDS Free‑Tier Postgres (or local SQLite).     | ⬜ Pending   |
+| 0.3  | Install Pulumi; create a **dev** stack with a placeholder API Gateway, a hello‑world Lambda, and RDS Free‑Tier Postgres (or local SQLite).     | ✅ Completed |
 | 0.4  | Add a GitHub Actions workflow: checkout → setup‑node → `npm ci` → lint + unit tests.                                                           | ⬜ Pending   |
 
 #### Sprint 1 — Core Backend (3 days)
