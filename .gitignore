@@ -9,3 +9,6 @@ build/
 .env.production.local
 coverage/
 .nyc_output/
+
+# Local setup documentation
+SETUP_SUMMARY.md

@@ -1,6 +1,31 @@
 # FinanceApp
 
-A modern JavaScript finance application with automated code quality tools.
+A privacy-first finance tracker built in two phases: **Personal Edition** (MVP for personal use) and **Multi-Tenant Edition** (public SaaS).
+
+## Project Overview
+
+This is a **dual-phase finance application** designed to:
+
+- **Phase I**: Create a self-hosted MVP for personal household finance tracking (you and your wife)
+- **Phase II**: Evolve into a secure, multi-tenant SaaS product for public users
+
+### Key Features (Phase I)
+
+- Manual transaction entry and CSV import
+- Budget management with rollover capabilities
+- Interactive dashboards (spend vs budget, category breakdowns, trends)
+- Shared visibility for household members
+- Mobile-responsive PWA
+
+### Architecture
+
+- **Frontend**: React/Next.js with Tailwind CSS
+- **Backend**: NestJS with TypeORM/Prisma
+- **Database**: PostgreSQL
+- **Hosting**: AWS Free Tier (serverless stack)
+- **Target Cost**: Free (within AWS free tier limits)
+
+📋 **[View Full Design Document](./DESIGN.md)** - Detailed roadmap, architecture, and sprint planning
 
 ## Code Quality Setup
 
