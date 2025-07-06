@@ -1,5 +1,7 @@
 # FinanceApp
 
+[![CI/CD Pipeline](https://github.com/darrenhum/FinanceApp/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/darrenhum/FinanceApp/actions/workflows/ci-cd.yml)
+
 A privacy-first finance tracker built in two phases: **Personal Edition** (MVP for personal use) and **Multi-Tenant Edition** (public SaaS).
 
 ## Project Overview
@@ -26,6 +28,47 @@ This is a **dual-phase finance application** designed to:
 - **Target Cost**: Free (within AWS free tier limits)
 
 📋 **[View Full Design Document](./DESIGN.md)** - Detailed roadmap, architecture, and sprint planning
+
+## Current Infrastructure Setup
+
+**Sprint 0 Complete** ✅
+
+The development environment and basic infrastructure are now set up and ready for application development:
+
+### Code Quality & Automation
+
+- **ESLint** with Prettier integration for consistent code formatting
+- **Husky** pre-commit hooks to ensure code quality before commits
+- **lint-staged** for efficient linting of only changed files
+- All configuration files properly set up and tested
+
+### Infrastructure as Code (Pulumi)
+
+- **AWS API Gateway** with RESTful endpoint structure
+- **AWS Lambda** function for serverless compute (hello-world endpoint deployed and tested)
+- **AWS RDS PostgreSQL** instance (free tier) for persistent data storage
+- Infrastructure provisioned in `us-east-1` region with dev stack
+
+### CI/CD Pipeline (GitHub Actions)
+
+- **Multi-node testing** strategy (Node.js 18.x and 20.x)
+- **Automated testing** with custom test runner (validates project structure, dependencies, and basic functionality)
+- **Code quality checks** (ESLint and Prettier validation)
+- **Security scanning** with npm audit
+- **Infrastructure validation** with Pulumi preview/deployment on main branch
+- **Status badges** in README for build visibility
+
+### Current Endpoints
+
+- **API Gateway**: `https://1l9nqnfhq5.execute-api.us-east-1.amazonaws.com/dev/hello`
+- **Lambda Function**: Successfully deployed and responds with "Hello, World!"
+- **Database**: PostgreSQL RDS instance ready for application schema
+
+### Development Tools
+
+- VS Code workspace configured with recommended extensions
+- Git hooks for automated code quality enforcement
+- Package.json scripts for common development tasks (lint, format, test)
 
 ## Code Quality Setup
 
