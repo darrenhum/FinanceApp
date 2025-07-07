@@ -29,11 +29,11 @@ This is a **dual-phase finance application** designed to:
 
 📋 **[View Full Design Document](./DESIGN.md)** - Detailed roadmap, architecture, and sprint planning
 
-## Current Infrastructure Setup
+## Current Development Status
 
-**Sprint 0 Complete** ✅
-
-The development environment and basic infrastructure are now set up and ready for application development:
+**Sprint 0 Complete** ✅  
+**Sprint 1 Complete** ✅  
+**Sprint 2 Step 2.3 In Progress** 🔄
 
 ### Code Quality & Automation
 
@@ -48,6 +48,61 @@ The development environment and basic infrastructure are now set up and ready fo
 - **AWS Lambda** function for serverless compute (hello-world endpoint deployed and tested)
 - **AWS RDS PostgreSQL** instance (free tier) for persistent data storage
 - Infrastructure provisioned in `us-east-1` region with dev stack
+
+### Backend API (NestJS)
+
+- **Complete authentication system** with JWT tokens and bcrypt password hashing
+- **Database entities** for Household, User, Account, Category, and Transaction
+- **TypeORM integration** with PostgreSQL database
+- **CRUD endpoints** for all major entities with comprehensive validation
+- **Seed data** with sample accounts, categories, and users
+- **Test coverage** with Jest for all major components
+
+#### Available API Endpoints
+
+**Authentication:**
+
+- `POST /auth/register` - User registration
+- `POST /auth/login` - User authentication
+
+**Transactions:**
+
+- `POST /transactions` - Create new transaction
+- `GET /transactions` - Get transactions with optional month filter
+
+**Accounts:**
+
+- `GET /accounts` - Get all accounts for the household
+- `POST /accounts` - Create new account
+- `GET /accounts/:id` - Get account by ID
+- `PUT /accounts/:id` - Update account
+- `DELETE /accounts/:id` - Delete account
+
+**Categories:**
+
+- `GET /categories` - Get all categories
+- `POST /categories` - Create new category
+- `GET /categories/:id` - Get category by ID
+- `PUT /categories/:id` - Update category
+- `DELETE /categories/:id` - Delete category
+
+**Users:**
+
+- `GET /users` - Get all users in the household
+- `POST /users` - Create new user
+- `GET /users/:id` - Get user by ID
+- `PUT /users/:id` - Update user
+- `DELETE /users/:id` - Delete user
+
+_Note: JWT guards temporarily removed for API testing during development_
+
+### Frontend (Next.js)
+
+- **React/Next.js application** with Tailwind CSS for styling
+- **Transaction form** with React Hook Form and Zod validation
+- **Responsive design** optimized for desktop and mobile
+- **Form validation** with comprehensive error handling
+- **API integration** ready for backend connectivity
 
 ### CI/CD Pipeline (GitHub Actions)
 
