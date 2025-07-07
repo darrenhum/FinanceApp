@@ -81,35 +81,37 @@ A staged plan for building a privacy‑first finance tracker for personal use (P
 
 #### Sprint 1 — Core Backend (3 days)
 
-| Step | Task                                                                    |
-| ---- | ----------------------------------------------------------------------- |
-| 1.0  | Run `nest new backend` (monorepo preset).                               |
-| 1.1  | Install `@nestjs/terminus`, `class‑validator`, and `class‑transformer`. |
-| 1.2  | Connect TypeORM/Prisma to Postgres via `.env`.                          |
-| 1.3  | Create entities & migrations: Household, User, Category, Account.       |
-| 1.4  | Build `AuthModule` with bcrypt (12 salt rounds) and JWT guards.         |
-| 1.5  | Seed script: Household **Family**, two users, default categories.       |
+| Step | Task                                                                                      |
+| ---- | ----------------------------------------------------------------------------------------- |
+| 1.0  | Run `nest new backend` (monorepo preset). **(✅ Completed)**                               |
+| 1.1  | Install `@nestjs/terminus`, `class‑validator`, and `class‑transformer`. **(✅ Completed)** |
+| 1.2  | Connect TypeORM/Prisma to Postgres via `.env`. **(✅ Completed)**                          |
+| 1.3  | Create entities & migrations: Household, User, Category, Account. **(✅ Completed)**       |
+| 1.4  | Build `AuthModule` with bcrypt (12 salt rounds) and JWT guards. **(✅ Completed)**         |
+| 1.5  | Seed script: Household **Family**, two users, default categories. **(✅ Completed)**       |
 
-#### Sprint 2 — Transaction Flow (4 days)
+#### Sprint 2 — Transaction Flow & Basic Front‑End (4 days)
 
-| Step | Task                                                            |
-| ---- | --------------------------------------------------------------- |
-| 2.0  | Add the `Transaction` entity and migration.                     |
-| 2.1  | Implement `POST /transactions` and `GET /transactions?month=`.  |
-| 2.2  | Add DTO validation; write Jest unit tests.                      |
-| 2.3  | Build `pages/transactions/new.tsx` with React Hook Form + Zod.  |
-| 2.4  | Add CSV importer (Papa Parse) → batch POST ≈ 100 rows per call. |
-| 2.5  | Trigger budget recalculation after each insert.                 |
+| Step | Task                                                                                                                         |   |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------- | - |
+| 2.0  | Add the `Transaction` entity and migration. **(✅ Completed)**                                                                |   |
+| 2.1  | Implement `POST /transactions` and `GET /transactions?month=` endpoints. **(✅ Completed)**                                   |   |
+| 2.2  | Add DTO validation and write Jest unit tests.                                                                                |   |
+| 2.3  | Build `pages/transactions/new.tsx` (new‑transaction form) using React Hook Form + Zod.                                       |   |
+| 2.4  | Implement CSV importer (Papa Parse) → batch POST ≈ 100 rows per call.                                                        |   |
+| 2.5  | Build `pages/transactions/index.tsx` – list view with basic pagination, date filter, and a link to the new‑transaction page. |   |
 
-#### Sprint 3 — Budget Engine (3 days)
+#### Sprint 3 — Budget Engine (3 days) — Budget Engine (3 days)
 
-| Step | Task                                                                 |
-| ---- | -------------------------------------------------------------------- |
-| 3.0  | Add the `Budget` entity and migration.                               |
-| 3.1  | CRUD endpoints: `GET/POST/PUT /budgets`.                             |
-| 3.2  | Implement rollover helper.                                           |
-| 3.3  | Schedule a `monthly‑budget‑rollover` Lambda (cron @ first‑of‑month). |
-| 3.4  | Integration tests for overspend and unused‑rollover cases.           |
+| Step                                                       | Task                                                                  |
+| ---------------------------------------------------------- | --------------------------------------------------------------------- |
+| 3.0                                                        | Add the `Budget` entity and migration.                                |
+| 3.1                                                        | CRUD endpoints: `GET/POST/PUT /budgets`.                              |
+| 3.2                                                        | Implement rollover helper.                                            |
+| 3.3                                                        | Schedule a `monthly‑budget‑rollover` Lambda (cron @ first‑of‑month).  |
+| 3.4                                                        | Integration tests for overspend and unused‑rollover cases.            |
+| 3.5                                                        | Trigger budget recalculation after each insert (moved from Sprint 2). |
+| Integration tests for overspend and unused‑rollover cases. |                                                                       |
 
 #### Sprint 4 — Front‑End Dashboards (4 days)
 
