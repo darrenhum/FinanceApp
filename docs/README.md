@@ -436,20 +436,13 @@ FinanceApp/
 - `users`: Exactly 2 users per household with secure password storage
 - `categories`: Hierarchical budget categories with parent-child relationships
 - `accounts`: Bank accounts and credit cards with balance tracking
-- `transactions`: (Coming in Sprint 2) Transaction records with category assignment
+- `transactions`: ✅ **Transaction records with category assignment (Sprint 2, Step 2.0 Complete)**
 - `budgets`: (Coming in Sprint 3) Monthly budget limits with rollover capabilities
-  ├── src/ # Application source code
-  │ ├── index.js # Main application entry point
-  │ └── test/ # Test files
-  │ └── test.js # Custom test runner
-  ├── .gitignore # Git ignore patterns
-  ├── .lintstagedrc.js # Lint-staged configuration
-  ├── .prettierrc # Prettier formatting rules
-  ├── .prettierignore # Files to exclude from formatting
-  ├── eslint.config.js # ESLint configuration (flat config)
-  ├── package.json # Project dependencies and scripts
-  ├── DESIGN.md # Project roadmap and planning (manual updates only)
-  └── README.md # Project documentation (this file)
+
+**Sprint 2 Progress:**
+
+- **Step 2.0 Complete** ✅: Transaction entity and database schema created with proper foreign key relationships to accounts, categories, and users
+- **Step 2.1 Complete** ✅: Transaction API endpoints implemented (`POST /transactions` and `GET /transactions?month=`) with JWT authentication, proper service layer, and TypeORM repository integration
 
 ### Design Principles
 

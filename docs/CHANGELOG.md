@@ -12,6 +12,16 @@ This file serves as a granular, running log of all changes made to the FinanceAp
 
 ## 2025-07-06
 
+### 21:00 - Completed Sprint 2, Step 2.1: Transaction API Endpoints Implementation
+
+- **Action**: Implemented complete Transaction API with POST and GET endpoints including authentication and filtering
+- **Context**: Created transactions module with controller, service, and DTOs. Implemented `POST /transactions` endpoint for creating transactions with JWT authentication and user context. Implemented `GET /transactions?month=` endpoint with optional month filtering (YYYY-MM format). Added proper TypeORM relationships and query building. Created comprehensive validation DTOs using class-validator. Added unit test for transactions controller. All tests passing (2/2 backend unit tests, 10/10 integration tests). Module properly integrated into main AppModule.
+
+### 20:45 - Completed Sprint 2, Step 2.0: Transaction Entity Implementation
+
+- **Action**: Implemented Transaction entity with proper database schema and relationships
+- **Context**: Created `backend/src/entities/transaction.entity.ts` with all required fields per design document: id, account_id, date, amount, merchant, description, category_id, added_by_user_id, owner_user_id, card_id. Added foreign key relationships to Account, Category, and User entities. Updated entities index file to export Transaction. Verified database table creation and constraints through backend startup. All tests passing (backend unit tests, E2E tests, and integration tests).
+
 ### 19:40 - Restructured development environment setup sections in docs/README.md
 
 - **Action**: Merged Mac and Windows development environment setup sections to eliminate duplicates
