@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { Household } from '../entities/household.entity';
 import { User } from '../entities/user.entity';
 import { Category } from '../entities/category.entity';
+import { Account, AccountType } from '../entities/account.entity';
 import * as bcrypt from 'bcrypt';
 
 export class InitialSeed {
@@ -297,6 +298,52 @@ export class InitialSeed {
         }
       } else {
         console.log(`Category ${categoryData.name} already exists`);
+      }
+    }
+
+    // Create Sample Accounts
+    const accountRepo = this.dataSource.getRepository(Account);
+    const accounts = [
+      {
+        name: 'Main Checking',
+        institution: 'Bank of America',
+        type: AccountType.CHECKING,
+        last_four: '1234',
+        balance: 2500.0,
+        is_active: true,
+      },
+      {
+        name: 'Savings Account',
+        institution: 'Bank of America',
+        type: AccountType.SAVINGS,
+        last_four: '5678',
+        balance: 10000.0,
+        is_active: true,
+      },
+      {
+        name: 'Credit Card',
+        institution: 'Chase',
+        type: AccountType.CREDIT_CARD,
+        last_four: '9012',
+        balance: -1250.5,
+        is_active: true,
+      },
+    ];
+
+    for (const accountData of accounts) {
+      const existingAccount = await accountRepo.findOne({
+        where: { name: accountData.name, household_id: household.id },
+      });
+
+      if (!existingAccount) {
+        const account = accountRepo.create({
+          ...accountData,
+          household_id: household.id,
+        });
+        await accountRepo.save(account);
+        console.log(`Created account: ${accountData.name}`);
+      } else {
+        console.log(`Account ${accountData.name} already exists`);
       }
     }
 
