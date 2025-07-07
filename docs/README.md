@@ -443,6 +443,7 @@ FinanceApp/
 
 - **Step 2.0 Complete** ✅: Transaction entity and database schema created with proper foreign key relationships to accounts, categories, and users
 - **Step 2.1 Complete** ✅: Transaction API endpoints implemented (`POST /transactions` and `GET /transactions?month=`) with JWT authentication, proper service layer, and TypeORM repository integration
+- **Step 2.2 Complete** ✅: Enhanced DTO validation with comprehensive input sanitization and extensive Jest unit tests for robust error handling and edge case coverage
 
 ### Design Principles
 

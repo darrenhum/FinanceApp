@@ -20,7 +20,10 @@ export class TransactionsController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() createTransactionDto: CreateTransactionDto, @Req() req) {
+  async create(
+    @Body() createTransactionDto: CreateTransactionDto,
+    @Req() req: { user: { userId: string } },
+  ) {
     const userId = req.user.userId;
     return await this.transactionsService.create(createTransactionDto, userId);
   }
