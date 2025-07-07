@@ -125,16 +125,262 @@ npm run format:check
    - Format code with Prettier
    - Only allow the commit if no unfixable issues remain
 
-## Getting Started
+   The pre-commit hooks ensure that all committed code follows the project's style guidelines and is free of common issues.
+
+## Development Environment Setup
+
+### Mac Prerequisites
+
+1. **Install Homebrew** (if not already installed):
+
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+2. **Install Node.js** (using Node Version Manager for better version control):
+
+   ```bash
+   # Install nvm
+   brew install nvm
+
+   # Add nvm to your shell profile (.zshrc or .bash_profile)
+   echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+   echo '[ -s "/opt/homebrew/share/nvm/nvm.sh" ] && \. "/opt/homebrew/share/nvm/nvm.sh"' >> ~/.zshrc
+   echo '[ -s "/opt/homebrew/share/nvm/bash_completion" ] && \. "/opt/homebrew/share/nvm/bash_completion"' >> ~/.zshrc
+
+   # Restart your terminal or source your profile
+   source ~/.zshrc
+
+   # Install and use Node.js 20.x (recommended)
+   nvm install 20
+   nvm use 20
+   nvm alias default 20
+   ```
+
+3. **Install Git and VS Code**:
+   ```bash
+   brew install git
+   brew install --cask visual-studio-code
+   ```
+
+### Windows Prerequisites
+
+1. **Install Node.js via Node Version Manager (nvm-windows)**:
+
+   Download and install nvm-windows from the [official repository](https://github.com/coreybutler/nvm-windows/releases):
+
+   ```powershell
+   # Download the latest nvm-setup.zip from GitHub releases
+   # Extract and run nvm-setup.exe as Administrator
+   ```
+
+   After installation, restart your terminal and run:
+
+   ```powershell
+   # Verify nvm installation
+   nvm version
+
+   # Install and use Node.js 20.x (recommended)
+   nvm install 20.12.2
+   nvm use 20.12.2
+
+   # Set as default
+   nvm alias default 20.12.2
+
+   # Verify installation
+   node --version
+   npm --version
+   ```
+
+2. **Install Git and VS Code**:
+
+   Download and install from their official websites:
+   - Git: [git-scm.com](https://git-scm.com/download/win)
+   - VS Code: [code.visualstudio.com](https://code.visualstudio.com/)
+
+3. **Optional: Package Manager Installation**:
+
+   ```powershell
+   # Using Chocolatey (run as Administrator)
+   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+   choco install nodejs-lts git vscode -y
+
+   # Or using Winget (Windows Package Manager)
+   winget install OpenJS.NodeJS.LTS
+   winget install Git.Git
+   winget install Microsoft.VisualStudioCode
+   ```
+
+4. **PowerShell Configuration**:
+
+   ```powershell
+   # Enable script execution (if needed)
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+   # Optional: Configure PowerShell profile with useful aliases
+   if (!(Test-Path $PROFILE)) {
+       New-Item -Type File -Path $PROFILE -Force
+   }
+
+   # Add useful aliases to profile
+   Add-Content $PROFILE "function ll { Get-ChildItem -Force }"
+   Add-Content $PROFILE "function la { Get-ChildItem -Force -Hidden }"
+   Add-Content $PROFILE "Set-Alias -Name grep -Value Select-String"
+   ```
+
+### Project Setup (All Platforms)
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/darrenhum/FinanceApp.git
+   cd FinanceApp
+   ```
+
+2. **Install project dependencies**:
+
+   ```bash
+   # Install root dependencies
+   npm install
+
+   # Install backend dependencies
+   cd backend
+   npm install
+   cd ..
+
+   # Install Pulumi dependencies (optional, for infrastructure work)
+   cd pulumi
+   npm install
+   cd ..
+   ```
+
+3. **Verify installation**:
+
+   ```bash
+   # Run integration tests
+   npm test
+
+   # Run backend tests
+   npm run test:backend
+
+   # Check code quality
+   npm run lint
+   ```
+
+### Backend Development Setup
+
+1. **Environment variables**: The backend `.env` file is already configured with AWS RDS credentials. No changes needed unless working with a local database.
+
+2. **Database setup**: The database is already seeded with initial data. To re-run the seed script (script is idempotent):
+
+   ```bash
+   cd backend
+   npm run seed
+   ```
+
+3. **Start the backend server**:
+
+   ```bash
+   cd backend
+   npm run start:dev  # Development mode with hot reload
+   # or
+   npm start          # Production mode
+   ```
+
+   The backend will be available at `http://localhost:3000`
+
+### Recommended VS Code Extensions
+
+Install these extensions for the best development experience:
 
 ```bash
-# Install dependencies
-npm install
-
-# Start developing - the pre-commit hooks are already set up!
+# Install via command line (Mac/Linux)
+code --install-extension esbenp.prettier-vscode
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension ms-vscode.vscode-typescript-next
+code --install-extension bradlc.vscode-tailwindcss
+code --install-extension ms-vscode.vscode-json
 ```
 
-The pre-commit hooks ensure that all committed code follows the project's style guidelines and is free of common issues.
+```powershell
+# Install via command line (Windows PowerShell)
+code --install-extension esbenp.prettier-vscode
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension ms-vscode.vscode-typescript-next
+code --install-extension bradlc.vscode-tailwindcss
+code --install-extension ms-vscode.vscode-json
+```
+
+Or install via VS Code Extensions panel:
+
+- **Prettier** - Code formatter
+- **ESLint** - JavaScript/TypeScript linter
+- **TypeScript Importer** - Auto import for TypeScript
+- **Tailwind CSS IntelliSense** - For future frontend work
+- **Thunder Client** - API testing (alternative to Postman)
+
+### Development Workflow
+
+1. **Create a feature branch**:
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make your changes** following the project structure:
+   - Backend code: `backend/src/`
+   - Tests: `backend/test/` for backend-specific, `test/` for integration
+   - Documentation: `docs/README.md` (this file)
+
+3. **Test your changes**:
+
+   ```bash
+   # Run all tests
+   npm test
+   npm run test:backend
+
+   # Check code quality
+   npm run lint
+   npm run format:check
+   ```
+
+4. **Commit changes** (pre-commit hooks will run automatically):
+
+   ```bash
+   git add .
+   git commit -m "feat: your descriptive commit message"
+   ```
+
+5. **Push and create PR**:
+   ```bash
+   git push origin feature/your-feature-name
+   # Then create a Pull Request on GitHub
+   ```
+
+### Common Development Commands
+
+```bash
+# Root level (all platforms)
+npm test                   # Run integration tests
+npm run lint               # Check code quality
+npm run format             # Format all files with Prettier
+
+# Backend development
+cd backend
+npm run start:dev          # Start with hot reload
+npm run build              # Build for production
+npm test                   # Run backend tests
+npm run seed               # Seed database with initial data
+
+# Infrastructure (optional)
+cd pulumi
+pulumi preview             # Preview infrastructure changes
+pulumi up                  # Deploy infrastructure changes
+```
+
+**Note**: All npm commands work identically on Windows, Mac, and Linux. Windows users can use `Set-Location` instead of `cd` in PowerShell if preferred.
+
+The project follows conventional commit messages and has automated code quality checks. All commits must pass linting and tests before being accepted.
 
 ## Project Structure
 
@@ -205,8 +451,6 @@ FinanceApp/
   ├── DESIGN.md # Project roadmap and planning (manual updates only)
   └── README.md # Project documentation (this file)
 
-```
-
 ### Design Principles
 
 - **Clean Root Directory**: Only essential configuration files in project root
@@ -214,4 +458,3 @@ FinanceApp/
 - **Industry Standards**: Follows Node.js and modern JavaScript project conventions
 - **Scalability**: Structure supports future growth and additional features
 - **Developer Experience**: Clear organization for easy navigation and onboarding
-```

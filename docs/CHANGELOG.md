@@ -12,6 +12,16 @@ This file serves as a granular, running log of all changes made to the FinanceAp
 
 ## 2025-07-06
 
+### 19:40 - Restructured development environment setup sections in docs/README.md
+
+- **Action**: Merged Mac and Windows development environment setup sections to eliminate duplicates
+- **Context**: Combined platform-specific prerequisites into a single "Development Environment Setup" section with separate Mac and Windows subsections. Moved all common setup steps (project setup, backend development, VS Code extensions, development workflow, troubleshooting) to unified sections. Removed duplicate Windows section that was added earlier. Now platform-specific sections only contain relevant OS-specific commands and prerequisites.
+
+### 19:30 - Added Windows development environment setup to docs/README.md
+
+- **Action**: Comprehensive Windows development environment setup section added
+- **Context**: Added detailed Windows-specific installation instructions for Node.js (via nvm-windows), Git, VS Code, and development tools. Included PowerShell configuration, alternative package managers (Chocolatey, Winget), Windows-specific troubleshooting, and platform-specific command examples. Updated VS Code extensions section and troubleshooting to include both Mac/Linux and Windows instructions.
+
 ### 19:10 - Project structure validation and status updates
 
 - **Action**: Comprehensive project structure review and validation
